@@ -26,7 +26,7 @@
             var startDateArr = options.startDate.split('-');
             startDate = new Date(startDateArr[2], startDateArr[1]-1, startDateArr[0]);
 
-            var endDateArr = options.endDate.split('-')
+            var endDateArr = options.endDate.split('-');
             endDate = new Date(endDateArr[2], endDateArr[1]-1, endDateArr[0]);
 
             var today = new Date();
