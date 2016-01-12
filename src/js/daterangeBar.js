@@ -23,16 +23,41 @@
         },
 
         renderBar: function(obj, options) {
-            var startDateArr = options.startDate.split('-');
-            startDate = new Date(startDateArr[2], startDateArr[1]-1, startDateArr[0]);
 
-            var endDateArr = options.endDate.split('-');
-            endDate = new Date(endDateArr[2], endDateArr[1]-1, endDateArr[0]);
+            var startDateDayArr, startDateTimeArr, startDate, endDateDayArr, endDate, endDateTimeArr;
+
+            var startDateArr = options.startDate.split(' ');
+            if (startDateArr[1] != undefined){
+                startDateDayArr = startDateArr[0].split('-');
+                startDateTimeArr = startDateArr[1].split(':');
+                startDate = new Date(startDateDayArr[2], startDateDayArr[1]-1, startDateDayArr[0], startDateTimeArr[0], startDateTimeArr[1], startDateTimeArr[2]);
+            }
+            else{
+                startDateDayArr = startDateArr[0].split('-');
+                startDate = new Date(startDateDayArr[2], startDateDayArr[1]-1, startDateDayArr[0]);
+            }
+
+
+
+            var endDateArr = options.endDate.split(' ');
+            if (endDateArr[1] != undefined){
+                endDateDayArr = endDateArr[0].split('-');
+                endDateTimeArr = endDateArr[1].split(':');
+                endDate = new Date(endDateDayArr[2], endDateDayArr[1]-1, endDateDayArr[0], endDateTimeArr[0], endDateTimeArr[1], endDateTimeArr[2]);
+
+            }
+            else{
+                endDateDayArr = endDateArr[0].split('-');
+                endDate = new Date(endDateDayArr[2], endDateDayArr[1]-1, endDateDayArr[0]);
+            }
 
             var today = new Date();
 
-            var fullRange = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
-            var todayRange = Math.round((today - startDate) / (1000 * 60 * 60 * 24));
+            var fullRange = (startDateArr[1]!= undefined ? Math.round((endDate - startDate) / 1000) : Math.round((endDate - startDate) / (1000 * 60 * 60 * 24)));
+            var todayRange = (startDateArr[1]!= undefined ? Math.round((today - startDate) / 1000) : Math.round((today - startDate) / (1000 * 60 * 60 * 24)));
+
+            console.log(fullRange);
+            console.log(todayRange);
 
             var dateDiff = Math.round(todayRange * (parseInt(options.maxValue) - parseInt(options.minValue)) / fullRange);
             if (dateDiff < options.minValue){
@@ -42,6 +67,7 @@
                 dateDiff = options.maxValue;
             }
 
+            console.log(dateDiff);
 
             var progress = $('<div/>')
                 .addClass('progress');

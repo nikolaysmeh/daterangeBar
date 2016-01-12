@@ -1,9 +1,12 @@
-# DaterangeBar jQuery plugin
+g# DaterangeBar jQuery plugin
 
-The DaterangeBar is a jquery plugin which can be used for displaying percent of spent time in date range. The plugin support both Bootstrap classes and alone-mode. For more information see examples. 
+The DaterangeBar is a jquery plugin which can be used for displaying percent of spent time in date range. You can use only date or datetime stamp. In the last case precent will be counted accord to seconds. The plugin support both Bootstrap classes and alone-mode. For more information see examples. 
+
+## Demo
+[http://daterangebar.nikolay.ws/](http://daterangebar.nikolay.ws/)
 
 ## Version
-0.0.1
+0.0.2
 
 ## Examples
 ### Bootstrap mode
@@ -35,11 +38,11 @@ The message will be show fater percent value.
 By default 'of Year'
 
 ### startDate
-Start date in Format DD-MM-YYYY. 
+Start date in Format DD-MM-YYYY or in DD-MM-YYYY hh:mm:ss. In the last case percent will be counted accord the seconds. 
 By default: 01-01-2016
 
 ### endDate'
-End date in Format DD-MM-YYYY. 
+End date in Format DD-MM-YYYY or in DD-MM-YYYY hh:mm:ss. In the last case percent will be counted accord the seconds.
 By default: 31-12-2016
 
 ### barClass
